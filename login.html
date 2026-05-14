@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masuk — Forth Coffee Co</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--teal:#1A5C5A;--teal-mid:#2A8A85;--teal-light:#3AADA7;--teal-pale:#EAF4F3;--teal-bg:#0F3A38;--teal-dark:#0C2E2C;--cream:#F7F4EF;--white:#FFFFFF;--black:#111111;--text:#1A1A1A;--muted:#6B6B6B;--border:#E8E4DF}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);min-height:100vh;color:var(--text)}
+
+/* NAV */
+nav{background:var(--cream);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:1200px;margin:0 auto}
+.nav-logo{font-size:1rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text);cursor:pointer;text-decoration:none}
+.nav-logo span{display:block;font-size:.55rem;letter-spacing:.28em;color:var(--teal-mid)}
+.nav-back{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--text)}
+
+/* HERO */
+.page-hero{background:var(--teal-bg);padding:3rem 5%;text-align:center;position:relative;overflow:hidden}
+.page-hero svg{position:absolute;inset:0;width:100%;height:100%;opacity:.08;pointer-events:none}
+.hero-label{font-size:.67rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-light);margin-bottom:.5rem;position:relative}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:500;color:#fff;position:relative}
+.hero-sub{font-size:.85rem;color:rgba(255,255,255,.45);margin-top:.4rem;position:relative;font-weight:300}
+
+/* FORM */
+.form-wrap{display:flex;align-items:center;justify-content:center;padding:4rem 5%;min-height:60vh}
+.form-card{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:2.5rem;width:100%;max-width:440px;box-shadow:0 8px 40px rgba(15,58,56,0.08)}
+.fg{margin-bottom:1.1rem}
+.fg label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+.fg input{width:100%;border:1px solid var(--border);border-radius:2px;padding:11px 14px;font-size:.88rem;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);outline:none;transition:border-color .2s}
+.fg input:focus{border-color:var(--teal)}
+.fg-pw{position:relative}
+.fg-pw input{padding-right:44px}
+.toggle-pw{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--muted);font-size:.85rem;user-select:none;background:none;border:none}
+.btn-main{width:100%;padding:14px;background:var(--teal);color:#fff;border:none;border-radius:2px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;margin-top:.5rem}
+.btn-main:hover{background:var(--teal-mid)}
+.btn-main:disabled{background:var(--border);cursor:not-allowed}
+.btn-outline{display:block;width:100%;padding:11px;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:2px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;text-align:center;text-decoration:none}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+.divider{display:flex;align-items:center;gap:1rem;margin:1.5rem 0;padding-top:1.5rem;border-top:1px solid var(--border)}
+.divider span{font-size:.78rem;color:var(--muted);white-space:nowrap}
+.err-box{display:none;background:#fff5f5;border:1px solid #fed7d7;border-radius:2px;padding:10px 14px;font-size:.78rem;color:#c53030;margin-bottom:1.2rem;line-height:1.5}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-back">← Kembali</a>
+    <a href="/" class="nav-logo">Forth Coffee Co<span>Specialty Coffee Supply</span></a>
+    <a href="/signup.html" class="nav-back">Daftar →</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <svg viewBox="0 0 800 300" fill="none" preserveAspectRatio="xMidYMid slice">
+    <circle cx="400" cy="150" r="280" stroke="#3AADA7" stroke-width="1"/>
+    <circle cx="400" cy="150" r="220" stroke="#3AADA7" stroke-width=".8"/>
+    <circle cx="400" cy="150" r="160" stroke="#3AADA7" stroke-width=".6"/>
+    <path d="M0 150 Q200 60 400 150 Q600 240 800 150" stroke="#3AADA7" stroke-width="1" fill="none"/>
+  </svg>
+  <div class="hero-label">Welcome Back</div>
+  <div class="hero-title">Masuk ke Akun</div>
+  <div class="hero-sub">Masuk untuk melanjutkan belanja di Forth Coffee Co</div>
+</div>
+
+<div class="form-wrap">
+  <div class="form-card">
+    <div class="err-box" id="err"></div>
+
+    <div class="fg">
+      <label>Email</label>
+      <input type="email" id="email" placeholder="email@anda.com" autofocus>
+    </div>
+
+    <div class="fg">
+      <label>Password</label>
+      <div class="fg-pw">
+        <input type="password" id="pass" placeholder="Password">
+        <button class="toggle-pw" onclick="togglePw('pass',this)" tabindex="-1">👁</button>
+      </div>
+    </div>
+
+    <button class="btn-main" onclick="doLogin()" id="btn">Masuk</button>
+
+    <div class="divider"><span>Belum punya akun?</span></div>
+    <a href="/signup.html" class="btn-outline">Daftar Sekarang</a>
+  </div>
+</div>
+
+<script>
+const API = 'http://187.77.141.178/api';
+
+function togglePw(id, btn) {
+  const el = document.getElementById(id);
+  el.type = el.type === 'password' ? 'text' : 'password';
+  btn.textContent = el.type === 'password' ? '👁' : '🙈';
+}
+
+document.addEventListener('keydown', e => { if(e.key === 'Enter') doLogin(); });
+
+async function doLogin() {
+  const email = document.getElementById('email').value.trim();
+  const pass = document.getElementById('pass').value;
+  const err = document.getElementById('err');
+  const btn = document.getElementById('btn');
+  err.style.display = 'none';
+
+  if (!email || !pass) { showErr('Email dan password wajib diisi'); return; }
+
+  btn.textContent = 'Memuat...'; btn.disabled = true;
+  try {
+    const r = await fetch(API + '/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pass })
+    });
+    const d = await r.json();
+    if (!r.ok) { showErr(d.error || 'Login gagal'); btn.textContent = 'Masuk'; btn.disabled = false; return; }
+    localStorage.setItem('fc_token', d.token);
+    localStorage.setItem('fc_user', JSON.stringify(d.user));
+    // Redirect ke halaman sebelumnya atau home
+    const redirect = new URLSearchParams(window.location.search).get('redirect') || '/';
+    window.location.href = redirect;
+  } catch(e) {
+    showErr('Koneksi gagal, coba lagi');
+    btn.textContent = 'Masuk'; btn.disabled = false;
+  }
+}
+
+function showErr(msg) {
+  const err = document.getElementById('err');
+  err.textContent = msg; err.style.display = 'block';
+}
+</script>
+</body>
+</html>

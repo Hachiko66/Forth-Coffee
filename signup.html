@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar — Forth Coffee Co</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--teal:#1A5C5A;--teal-mid:#2A8A85;--teal-light:#3AADA7;--teal-pale:#EAF4F3;--teal-bg:#0F3A38;--cream:#F7F4EF;--white:#FFFFFF;--text:#1A1A1A;--muted:#6B6B6B;--border:#E8E4DF}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);min-height:100vh;color:var(--text)}
+nav{background:var(--cream);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:1200px;margin:0 auto}
+.nav-logo{font-size:1rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text);cursor:pointer;text-decoration:none}
+.nav-logo span{display:block;font-size:.55rem;letter-spacing:.28em;color:var(--teal-mid)}
+.nav-link{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-link:hover{color:var(--text)}
+.page-hero{background:var(--teal-bg);padding:3rem 5%;text-align:center;position:relative;overflow:hidden}
+.page-hero svg{position:absolute;inset:0;width:100%;height:100%;opacity:.08;pointer-events:none}
+.hero-label{font-size:.67rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-light);margin-bottom:.5rem;position:relative}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:500;color:#fff;position:relative}
+.hero-sub{font-size:.85rem;color:rgba(255,255,255,.45);margin-top:.4rem;position:relative;font-weight:300}
+.form-wrap{display:flex;align-items:center;justify-content:center;padding:4rem 5%;min-height:60vh}
+.form-card{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:2.5rem;width:100%;max-width:480px;box-shadow:0 8px 40px rgba(15,58,56,0.08)}
+.fg{margin-bottom:1.1rem}
+.fg label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+.fg input{width:100%;border:1px solid var(--border);border-radius:2px;padding:11px 14px;font-size:.88rem;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);outline:none;transition:border-color .2s}
+.fg input:focus{border-color:var(--teal)}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg-pw{position:relative}
+.fg-pw input{padding-right:44px}
+.toggle-pw{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--muted);font-size:.85rem;user-select:none;background:none;border:none}
+.btn-main{width:100%;padding:14px;background:var(--teal);color:#fff;border:none;border-radius:2px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;margin-top:.5rem}
+.btn-main:hover{background:var(--teal-mid)}
+.btn-main:disabled{background:var(--border);cursor:not-allowed}
+.btn-outline{display:block;width:100%;padding:11px;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:2px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;text-align:center;text-decoration:none}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+.divider{display:flex;align-items:center;gap:1rem;margin:1.5rem 0;padding-top:1.5rem;border-top:1px solid var(--border)}
+.divider span{font-size:.78rem;color:var(--muted);white-space:nowrap}
+.err-box{display:none;background:#fff5f5;border:1px solid #fed7d7;border-radius:2px;padding:10px 14px;font-size:.78rem;color:#c53030;margin-bottom:1.2rem;line-height:1.5}
+.ok-box{display:none;background:#f0fff4;border:1px solid #9ae6b4;border-radius:2px;padding:10px 14px;font-size:.78rem;color:#276749;margin-bottom:1.2rem;line-height:1.5}
+@media(max-width:480px){.fg-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-link">← Kembali</a>
+    <a href="/" class="nav-logo">Forth Coffee Co<span>Specialty Coffee Supply</span></a>
+    <a href="/login.html" class="nav-link">Masuk →</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <svg viewBox="0 0 800 300" fill="none" preserveAspectRatio="xMidYMid slice">
+    <circle cx="400" cy="150" r="280" stroke="#3AADA7" stroke-width="1"/>
+    <circle cx="400" cy="150" r="220" stroke="#3AADA7" stroke-width=".8"/>
+    <circle cx="400" cy="150" r="160" stroke="#3AADA7" stroke-width=".6"/>
+    <path d="M0 150 Q200 60 400 150 Q600 240 800 150" stroke="#3AADA7" stroke-width="1" fill="none"/>
+  </svg>
+  <div class="hero-label">Bergabung</div>
+  <div class="hero-title">Buat Akun Baru</div>
+  <div class="hero-sub">Daftar untuk menikmati pengalaman belanja kopi terbaik</div>
+</div>
+
+<div class="form-wrap">
+  <div class="form-card">
+    <div class="err-box" id="err"></div>
+    <div class="ok-box" id="ok"></div>
+
+    <div class="fg-row">
+      <div class="fg">
+        <label>Nama Lengkap *</label>
+        <input type="text" id="name" placeholder="Nama Anda" autofocus>
+      </div>
+      <div class="fg">
+        <label>Nomor HP</label>
+        <input type="tel" id="phone" placeholder="08xxx (opsional)">
+      </div>
+    </div>
+
+    <div class="fg">
+      <label>Email *</label>
+      <input type="email" id="email" placeholder="email@anda.com">
+    </div>
+
+    <div class="fg">
+      <label>Password *</label>
+      <div class="fg-pw">
+        <input type="password" id="pass" placeholder="Minimal 8 karakter">
+        <button class="toggle-pw" onclick="togglePw('pass',this)" tabindex="-1">👁</button>
+      </div>
+    </div>
+
+    <div class="fg">
+      <label>Konfirmasi Password *</label>
+      <div class="fg-pw">
+        <input type="password" id="pass2" placeholder="Ulangi password">
+        <button class="toggle-pw" onclick="togglePw('pass2',this)" tabindex="-1">👁</button>
+      </div>
+    </div>
+
+    <button class="btn-main" onclick="doSignup()" id="btn">Buat Akun</button>
+
+    <div class="divider"><span>Sudah punya akun?</span></div>
+    <a href="/login.html" class="btn-outline">Masuk</a>
+  </div>
+</div>
+
+<script>
+const API = 'http://187.77.141.178/api';
+
+function togglePw(id, btn) {
+  const el = document.getElementById(id);
+  el.type = el.type === 'password' ? 'text' : 'password';
+  btn.textContent = el.type === 'password' ? '👁' : '🙈';
+}
+
+async function doSignup() {
+  const name  = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const pass  = document.getElementById('pass').value;
+  const pass2 = document.getElementById('pass2').value;
+  const err   = document.getElementById('err');
+  const ok    = document.getElementById('ok');
+  const btn   = document.getElementById('btn');
+  err.style.display = 'none'; ok.style.display = 'none';
+
+  if (!name)            { showErr('Nama wajib diisi'); return; }
+  if (!email)           { showErr('Email wajib diisi'); return; }
+  if (!pass)            { showErr('Password wajib diisi'); return; }
+  if (pass.length < 8)  { showErr('Password minimal 8 karakter'); return; }
+  if (pass !== pass2)   { showErr('Konfirmasi password tidak sama'); return; }
+
+  btn.textContent = 'Memuat...'; btn.disabled = true;
+  try {
+    const r = await fetch(API + '/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password: pass, phone: phone || null })
+    });
+    const d = await r.json();
+    if (!r.ok) { showErr(d.error || 'Pendaftaran gagal'); btn.textContent = 'Buat Akun'; btn.disabled = false; return; }
+    localStorage.setItem('fc_token', d.token);
+    localStorage.setItem('fc_user', JSON.stringify(d.user));
+    ok.textContent = '✓ Akun berhasil dibuat! Mengalihkan...';
+    ok.style.display = 'block';
+    setTimeout(() => { window.location.href = '/'; }, 1200);
+  } catch(e) {
+    showErr('Koneksi gagal, coba lagi');
+    btn.textContent = 'Buat Akun'; btn.disabled = false;
+  }
+}
+
+function showErr(msg) {
+  const err = document.getElementById('err');
+  err.textContent = msg; err.style.display = 'block';
+}
+</script>
+</body>
+</html>
